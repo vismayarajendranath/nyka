@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useContext}from "react";
 import "./App.css";
 import {
   createBrowserRouter,
@@ -10,6 +10,8 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ErrorPage from "./pages/ErrorPage";
 import Layout from "./components/Layout";
+import { MyContext } from "./components/AppProvider";
+import AppProvider from "./components/AppProvider";
 
 const router = createBrowserRouter([
   {
@@ -17,8 +19,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        index:true,
-        path:'',
+        index: true,
         element: <HomePage />,
       },
       {
@@ -33,7 +34,15 @@ const router = createBrowserRouter([
   },
 ]);
 const App = () => {
-  return <RouterProvider router={router} />;
+
+  const {name} = useContext(MyContext)
+  console.log(name);
+
+  return (
+    <AppProvider>
+      <RouterProvider router={router} />
+    </AppProvider>
+  );
 };
 
 export default App;
