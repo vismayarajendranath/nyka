@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
+import { MyContext } from "./AppProvider";
 
 const ProductList = () => {
-  const [products, setProducts] = useState([]);
+  const {products, setProducts,searchTerm} = useContext(MyContext)
+
   useEffect(() => {
     const fetchedProds = async () => {
       const res = await fetch("https://fakestoreapi.com/products");
@@ -12,12 +14,15 @@ const ProductList = () => {
     fetchedProds();
     console.log(products);
   }, []);
+ 
+  
+
   return (
     <>
     <div className="grid grid-cols-12 container mx-auto gap-4 py-4">
     {products.map((item) => {
         return (
-          <div key={item.id} className=" !col-span-3">
+          <div key={item.id} className=" !col-span-3" style={{display: item.title.toLowerCase() === searchTerm.toLowerCase() ? 'none' : 'block' }}>
             <Card >
               <Card.Img variant="top" src={item.image} className="h-48 w-auto object-contain pt-4" />
               <Card.Body>

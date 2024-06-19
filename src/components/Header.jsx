@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,8 +8,12 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import img from '../Assets/nykaa-1.svg';
+import { MyContext } from './AppProvider';
 
 const Header = () => {
+  
+  const { searchTerm , setSearchTerm ,searchHandler} = useContext(MyContext)
+console.log(searchTerm);
   return (
     <>
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -32,6 +36,9 @@ const Header = () => {
               type="text"
               placeholder="Search"
               className=" mr-sm-2"
+              value={searchTerm}
+              onChange={(e)=>setSearchTerm(e.target.value)}
+              // onKeyUp={()=>searchHandler()}
             />
           </Col>
           <Col xs="auto">

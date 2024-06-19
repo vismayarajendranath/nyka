@@ -11,7 +11,7 @@ import AboutPage from "./pages/AboutPage";
 import ErrorPage from "./pages/ErrorPage";
 import Layout from "./components/Layout";
 import { MyContext } from "./components/AppProvider";
-import AppProvider from "./components/AppProvider";
+
 
 const router = createBrowserRouter([
   {
@@ -39,9 +39,8 @@ const App = () => {
   console.log(name);
 
   return (
-    <AppProvider>
       <RouterProvider router={router} />
-    </AppProvider>
+
   );
 };
 
