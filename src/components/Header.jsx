@@ -12,8 +12,8 @@ import { MyContext } from './AppProvider';
 
 const Header = () => {
   
-  const { searchTerm , setSearchTerm ,searchHandler} = useContext(MyContext)
-console.log(searchTerm);
+  const { searchTerm , setSearchTerm } = useContext(MyContext)
+// console.log(searchTerm);
   return (
     <>
     <Navbar expand="lg" className="bg-body-tertiary">

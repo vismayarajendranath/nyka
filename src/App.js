@@ -11,6 +11,7 @@ import AboutPage from "./pages/AboutPage";
 import ErrorPage from "./pages/ErrorPage";
 import Layout from "./components/Layout";
 import { MyContext } from "./components/AppProvider";
+import ProductPage from "./pages/ProductPage";
 
 
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
         path: "about",
         element: <AboutPage />,
       },
+      {
+        path:'product/:productID',
+        element:<ProductPage />
+      }
     ],
   },
   {
